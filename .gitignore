@@ -1,0 +1,9 @@
+# Project exclude paths
+/venv/
+
+*.csv
+*.npy
+*.pdf
+*.png
+*.gz
+*.pt

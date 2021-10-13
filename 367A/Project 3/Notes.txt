@@ -1,0 +1,63 @@
+Introduction
+	Neural networks are generally considered black-box models. This hinders their applications in domains where
+	high explainability or interperetability is required such as criminal justice or healthcare.
+	One way to make neural networks highly interperetable is to use Neural additive models, NAM's.
+	Here each input feature is passed through it's own seperate neural network.
+	Before each input feature is summed up and bias is added.
+	Then there may be some final activation.
+	
+	This makes NAM's highly explainable, as in order to understand how they work. You can can just plot
+	f(x) for each input feature x.
+	
+	Advantages:
+	- Familiar to the deep-learning community
+	- Can be combined with other deep-learning methods
+	- NAM's are very flexible, and easily applied to a large set of problems
+	- Scaleable as they can be trained on GPU's
+
+
+Neural additive models
+	Fitting jagged shape functions:
+	Being able to model jagged functions is necesarry to learn accurate additive models as the is often sharp
+	jumps in real world datasets.
+	Even though NN's can model arbitrarily complex functions, they often fail to model highly jumpy 1D functions in practice.
+	To solve this problem one can use "exp-centered" (ExU) units
+	
+	Regularization and training:
+	ExU units encourage learning highly jagged curves, but in practice most curves are smooth.
+	Thus several techniques are applied to avoid overfitting.
+	-Dropout of hidden units
+	-Weight decay by L2 regularization
+	-Penalize the L2 norm of the prediction of each feature net.
+	-Feature dropout, Drop individual feature networks during training. If there are correlated input features 
+	during training this well help ensure their correlated contribution is spread evenly across each input feature.
+
+AUC
+Etter (logistic activation) kan man velge et threshold for å classifie noe som positivt eller negativt.
+Man kan lage det som heter en ROC-kurve der 	y = True positive rate = true positives/(true positives+false negatives)
+						x = False positive rate = false positives/(false positives+true negatives)
+så kan man finne true/false positive rate for alle thersholds og tegne en kurve.
+Så kan man finne arealet under denne kurven for å finne AOC.
+
+
+Experiments
+	Bias term = Average prediction across all datapoints.
+	This also allows you to remove features without introducing bias.
+	Sammenlignes med: 	logistic/linear regression
+				Decistion Trees.
+				Explainable Boosting Machines EBM's - Shallow bagged trees that cycle on at a time through the features- 
+				DNN
+				Gradient Boosted Trees XGBOOST.
+	Compas: Risk prediction in criminal justice
+	Et verktøy for å predicte recidivism rate
+	MIMIC-II Mortality prediction at ICU
+	Credit fraud dataset: Financial fraud detection.
+	Regression California Houseing, predicting house prices
+	FICO SCORE, understanding credit scores.
+
+
+
+
+
+
+	
